@@ -13,7 +13,6 @@ body {
 #header {
     background-color: #1A9BA5;
     padding-left: 15px;
-    margin-top: 0;
 }
 
 #title-name {
@@ -24,6 +23,8 @@ body {
     width: auto;
     font-size: 70px;
     font-family: 'Segoe UI';
+    position: absolute;
+    top:5px;
 }
 
 #main-container {
@@ -39,6 +40,77 @@ body {
     margin-top: -9em; /*set to a negative number 1/2 of your height*/
     margin-left: -15em; /*set to a negative number 1/2 of your width*/
     border: 1px solid #ccc;
-    background-color: #f3f3f3;
+
 }
+
+button {
+    position:absolute;
+    background-color: #EF7F0F;
+    padding-left:100px;
+    padding-right:100px;
+    font-size: large;
+    border: none ;
+    border-radius: 5em;
+    color: white;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    position: relative;
+    top:50px;
+    left:80px;
+}
+
+#first-part {
+    color : #1A9BA5;
+    font-size: 50px ;
+    padding-left: 50px;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    position: relative;
+    top:10px;
+}
+
+#second-part {
+    color: black;
+    font-size: 50px;
+    padding-left: 5px;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    position: relative;
+    top:10px;
+
+}
+
+#username {
+    color: #707070;
+    padding-left: 50px;
+    font-family: 'Segoe UI';
+    font-size: medium;
+    position: relative;
+    top:10px;
+}
+
+input#username-input {
+    border-color: #707070;
+    padding-left: 5px;
+    position: relative;
+    top:10px;
+}
+
+#password{
+    color: #707070;
+    padding-left: 50px;
+    font-family: 'Segoe UI';
+    font-size: medium;
+    position: relative;
+    top:10px;
+}
+
+#password-input {
+    border-color: #707070;
+    padding-left: 5px;
+    position: relative;
+    top:10px;
+}
+
+
 
