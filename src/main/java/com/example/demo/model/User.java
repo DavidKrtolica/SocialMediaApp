@@ -15,7 +15,7 @@ public class User {
     private String email;
     private String password;
     private Collection<Friend> friendsByUserId;
-    private Collection<Friend> friendsByUserId_0;
+    private Collection<Friend> friendsByUserFriendlyId;
     private Collection<UserPost> userPostsByUserId;
 
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -108,12 +108,12 @@ public class User {
     }
 
     @OneToMany(mappedBy = "userByFriendlyId")
-    public Collection<Friend> getFriendsByUserId_0() {
-        return friendsByUserId_0;
+    public Collection<Friend> getFriendsByUserFriendlyId() {
+        return friendsByUserFriendlyId;
     }
 
-    public void setFriendsByUserId_0(Collection<Friend> friendsByUserId_0) {
-        this.friendsByUserId_0 = friendsByUserId_0;
+    public void setFriendsByUserFriendlyId(Collection<Friend> friendsByUserFriendlyId) {
+        this.friendsByUserFriendlyId = friendsByUserFriendlyId;
     }
 
     @OneToMany(mappedBy = "userByUserId")
