@@ -22,9 +22,9 @@ public class UserController {
     }
 
     //TEST METHOD FOR THE PROFILEPAGE.HTML, REMOVE LATER
-    @GetMapping("/profilePage")
+    @GetMapping("/userpage")
     public String returnProfilePage() {
-        return "/profilePage";
+        return "/userpage";
     }
 
     //METHOD FOR LOGIN
@@ -37,7 +37,7 @@ public class UserController {
         List<User> usersByCredentials = userRepository.findUserByEmailAndPasswordContaining(email, password);
 
         if (!usersByCredentials.isEmpty()){
-            return "redirect:/profilePage"; //ADD CORRECT LINK WHEN PROFILEPAGE.HTML IS IMPLEMENTED
+            return "redirect:/userpage"; //ADD CORRECT LINK WHEN PROFILEPAGE.HTML IS IMPLEMENTED
         } else {
             return "/index";
         }
