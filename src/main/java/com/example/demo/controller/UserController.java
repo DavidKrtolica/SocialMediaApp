@@ -37,7 +37,7 @@ public class UserController {
         List<User> usersByCredentials = userRepository.findUserByEmailAndPasswordContaining(email, password);
 
         if (!usersByCredentials.isEmpty()){
-            return "redirect:/userpage"; //ADD CORRECT LINK WHEN PROFILEPAGE.HTML IS IMPLEMENTED
+            return "redirect:/userpage";
         } else {
             return "/index";
         }
