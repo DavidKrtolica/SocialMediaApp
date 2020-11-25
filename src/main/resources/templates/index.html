@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
-<body>
-<div id="header">
-    <img src="/pictures/SMA-logo.gif" alt="Logo" id="logo">
-    <span id="title-name">SocialMediaApp</span>
-</div>
-<div id="main-container">
-    <form id="login-form" action="/index" method="post">
-        <span id="first-part">SMA</span>
-        <span id="second-part">Login</span><br>
 
-        <label for="username-input">Username:</label>
-        <input type="text" name="username" id="username-input" required><br>
+    <body>
+        <div id="header">
+            <img src="SMA-logo.gif" alt="Logo" id="logo">
+            <span id="title-name">SocialMediaApp</span>
+        </div>
+        <div id="main-container">
+            <form id="login-form" method="POST" action="userpage.html"> <!-- Here should be the method which can retrieve the
+            userpage.html page. -->
+            <span id="first-part">SMA</span>
+            <span id="second-part">Login</span><br>
 
-        <label for="password-input">Password:</label>
-        <input type="text" name="password" id="password-input" required><br>
+            <label  id="username">Username:</label>
+            <input required type="text" name="username" id="username-input" ><br>
 
-        <button value="submit">LOG IN</button>
-    </form>
-</div>
-</body>
+            <label for="password-input" id="password">Password:</label>
+            <input type="text" name="password" id="password-input" required><br>
+
+            <button id ="login" value="submit">LOG IN</button>
+            </form>
+        </div>
+    </body>
 </html>
