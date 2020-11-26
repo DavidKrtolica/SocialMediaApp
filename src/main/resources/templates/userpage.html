@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <title>Profile</title>
@@ -19,7 +19,7 @@
             <div id="user-area"></div>
                 <img src="picture/user-pic.png" alt="User Picture" id="logged-user-image">
 
-                <span id="user-name">User Name</span>
+                <span id="user-name" th:text="${loggedInUser.firstName + ' ' + loggedInUser.lastName}"></span>
             </div>
             <div id="area-description">
                 <p id="description">Description</p>
