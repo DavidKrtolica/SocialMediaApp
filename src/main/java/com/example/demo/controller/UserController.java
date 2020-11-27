@@ -39,17 +39,17 @@ public class UserController {
 
         //JPA REPOSITORY METHOD WHICH RETURNS A LIST OF USERS WITH EMAIL AND PASSWORD PASSED IN THE INDEX.HTML
         List<User> usersByCredentials = userRepository.findUserByEmailAndPasswordContaining(email, password);
-        //SET THE LOGGED-IN USER TO A GLOBAL VARIABLE
-        loggedInUser = userRepository.findUserByEmailAndPasswordContaining(email, password).get(0);
 
         if (!usersByCredentials.isEmpty()){
+            //SET GLOBAL VARIABLE FOR LOGGED IN USER
+            loggedInUser = usersByCredentials.get(0);
             return "redirect:/userpage";
         } else {
             return "/index";
         }
     }
 
-    //TEST METHOD FOR THE PROFILEPAGE.HTML, REMOVE LATER
+    //TMETHOD FOR RETRIEVEING THE USER PROFILE PAGE WITH ALL CONTENT
     @GetMapping("/userpage")
     public String returnProfilePage(Model model) {
 
@@ -57,7 +57,6 @@ public class UserController {
         int loggedInUserId = loggedInUser.getUserId();
         //SETTING IT TO A FRIENDS LIST GLOBAL VARIABLE
         friendsList = friendRepository.findByUserId(loggedInUserId);
-
 
         model.addAttribute("loggedInUser", loggedInUser);
         model.addAttribute("friendsList", friendsList);
