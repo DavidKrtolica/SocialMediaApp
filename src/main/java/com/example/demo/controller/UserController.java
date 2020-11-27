@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Friend;
 import com.example.demo.model.User;
+import com.example.demo.repository.FriendRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,19 +19,16 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    //GLOBAL VARIABLE FOR THE LOGGED-IN USER
+    @Autowired
+    FriendRepository friendRepository;
+
+    //GLOBAL VARIABLE FOR THE LOGGED-IN USER AND FRIENDS LIST
     User loggedInUser;
+    List<Friend> friendsList;
 
     @GetMapping("/index")
     public String returnIndex() {
         return "/index";
-    }
-
-    //TEST METHOD FOR THE PROFILEPAGE.HTML, REMOVE LATER
-    @GetMapping("/userpage")
-    public String returnProfilePage(Model model) {
-        model.addAttribute("loggedInUser", loggedInUser);
-        return "/userpage";
     }
 
     //METHOD FOR LOGIN
@@ -49,4 +48,20 @@ public class UserController {
             return "/index";
         }
     }
+
+    //TEST METHOD FOR THE PROFILEPAGE.HTML, REMOVE LATER
+    @GetMapping("/userpage")
+    public String returnProfilePage(Model model) {
+
+        //METHOD FOR GETTING ALL FRIENDS OF THE LOGGED IN USER BY USING HIS ID
+        int loggedInUserId = loggedInUser.getUserId();
+        //SETTING IT TO A FRIENDS LIST GLOBAL VARIABLE
+        friendsList = friendRepository.findByUserId(loggedInUserId);
+
+
+        model.addAttribute("loggedInUser", loggedInUser);
+        model.addAttribute("friendsList", friendsList);
+        return "/userpage";
+    }
+
 }

@@ -57,3 +57,8 @@ body {
     font-weight: bold;
     font-family: 'Segoe UI';
 }
+
+#user-picture-small {
+    width: 70px;
+    height: 70px;
+}
