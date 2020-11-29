@@ -49,7 +49,7 @@ public class UserController {
         }
     }
 
-    //TMETHOD FOR RETRIEVEING THE USER PROFILE PAGE WITH ALL CONTENT
+    //METHOD FOR RETRIEVEING THE USER PROFILE PAGE WITH ALL CONTENT
     @GetMapping("/userpage")
     public String returnProfilePage(Model model) {
 
@@ -61,6 +61,29 @@ public class UserController {
         model.addAttribute("loggedInUser", loggedInUser);
         model.addAttribute("friendsList", friendsList);
         return "/userpage";
+    }
+
+    //METHOD FOR RETRIEVEING A NEW PAGE WHICH SHOWS A LIST OF USERS
+    @GetMapping("/usersearch")
+    public String returnSearchPage(Model model, WebRequest wr) {
+
+        String userSearch = wr.getParameter("search");
+
+        /*if (userSearch.equals("") || userSearch.equals(" ") || userSearch.equals("   ")) {
+            String error = "We cannot find the user you are looking for!";
+            model.addAttribute("error", error);
+            return "/usersearch";
+        }*/
+
+        //2 POSSIBLE ERRORS - ONE IS EMPTY SEARCH FORM AND SECOND IS SEARCH FOR USER THAT DOESNT EXIST
+
+        String[] usernameArr = userSearch.split(" ");
+        for(String s : usernameArr) {
+            List<User> userList = userRepository.findUserByFirstNameContaining(s);
+            userList.addAll(userRepository.findUserByLastNameContaining(s));
+            model.addAttribute("userList", userList);
+        }
+        return "/usersearch";
     }
 
 }

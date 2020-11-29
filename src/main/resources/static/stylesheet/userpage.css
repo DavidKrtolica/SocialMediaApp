@@ -15,10 +15,13 @@ body {
     height: 100px;
 }
 
-#search {
+#search-form {
     position: relative;
     left: 100px;
-    top: -30px;
+    top: -75px;
+}
+
+#search {
     background-color: #655F5F;
     border-radius: 5em;
     border-color: black;
@@ -30,7 +33,7 @@ body {
 
 #log-out-form {
     position: relative;
-    top: -100px;
+    top: -140px;
     left: 60%;
 }
 
