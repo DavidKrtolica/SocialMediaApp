@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    <div>
+        <span th:if="${userSearch == '' || userSearch == ' '}">You have searched for nothing!</span>
+        <span th:unless="${userSearch == '' || userSearch == ' '}">
+            <div th:switch="${userList.size()}">
+                <span th:case="'0'">There are no users corresponding to Your search!</span>
+                <div th:case="*">
+                    <div th:each="user: ${userList}" th:text="${user.firstName + ' ' + user.lastName}"></div>
+                </div>
+            </div>
+        </span>
+    </div>
+</body>
+</html>

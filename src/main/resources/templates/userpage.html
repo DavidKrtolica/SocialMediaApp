@@ -9,16 +9,17 @@
         <div id="header">
             <img src ="picture/SMA-logo.gif" alt="logo" id ="logo">
 
-            <input type = "text" name="search" id="search">
+            <form id="search-form" action="/usersearch" method="get">
+                <input type = "text" name="search" id="search">
+            </form>
 
             <form id="log-out-form" action="/index" method="get" >
-            <button id="log-out-button" type="submit">LOG OUT</button>
+                <button id="log-out-button" type="submit">LOG OUT</button>
             </form>
         </div>
         <div id="main-section">
             <div id="user-area"></div>
                 <img src="picture/user-pic.png" alt="User Picture" id="logged-user-image">
-
                 <span id="user-name" th:text="${loggedInUser.firstName + ' ' + loggedInUser.lastName}"></span>
             </div>
             <div id="area-description">
@@ -29,9 +30,8 @@
                 <img src="picture/user-pic.png" id="user-picture-small">
                 <div class="friend-user-firstName" th:text="${friend.getUserByFriendlyId().firstName + ' '
                                                             + friend.getUserByFriendlyId().lastName}">
-
                 </div>
                 <button>Remove Friend</button><br><br>
-            </div>
+        </div>
     </body>
 </html>
