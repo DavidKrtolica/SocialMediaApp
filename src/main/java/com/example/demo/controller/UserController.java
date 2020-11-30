@@ -68,14 +68,7 @@ public class UserController {
     public String returnSearchPage(Model model, WebRequest wr) {
 
         String userSearch = wr.getParameter("search");
-
-        /*if (userSearch.equals("") || userSearch.equals(" ") || userSearch.equals("   ")) {
-            String error = "We cannot find the user you are looking for!";
-            model.addAttribute("error", error);
-            return "/usersearch";
-        }*/
-
-        //2 POSSIBLE ERRORS - ONE IS EMPTY SEARCH FORM AND SECOND IS SEARCH FOR USER THAT DOESNT EXIST
+        model.addAttribute("userSearch", userSearch);
 
         String[] usernameArr = userSearch.split(" ");
         for(String s : usernameArr) {

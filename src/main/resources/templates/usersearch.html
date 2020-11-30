@@ -5,8 +5,16 @@
     <title>Search</title>
 </head>
 <body>
-    <div th:each="user: ${userList}">
-        <div th:text="${user.firstName + ' ' + user.lastName}"></div>
+    <div>
+        <span th:if="${userSearch == '' || userSearch == ' '}">You have searched for nothing!</span>
+        <span th:unless="${userSearch == '' || userSearch == ' '}">
+            <div th:switch="${userList.size()}">
+                <span th:case="'0'">There are no users corresponding to Your search!</span>
+                <div th:case="*">
+                    <div th:each="user: ${userList}" th:text="${user.firstName + ' ' + user.lastName}"></div>
+                </div>
+            </div>
+        </span>
     </div>
 </body>
 </html>
