@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
+
 import java.util.List;
 
 
@@ -25,6 +27,7 @@ public class UserController {
     //GLOBAL VARIABLE FOR THE LOGGED-IN USER AND FRIENDS LIST
     User loggedInUser;
     List<Friend> friendsList;
+    List<User> userList;
 
     @GetMapping("/index")
     public String returnIndex() {
@@ -72,11 +75,17 @@ public class UserController {
 
         String[] usernameArr = userSearch.split(" ");
         for(String s : usernameArr) {
-            List<User> userList = userRepository.findUserByFirstNameContaining(s);
+            userList = userRepository.findUserByFirstNameContaining(s);
             userList.addAll(userRepository.findUserByLastNameContaining(s));
             model.addAttribute("userList", userList);
         }
         return "/usersearch";
     }
 
+    @GetMapping("/user/{id}")
+    public String returnOtherUserProfilePage(@PathVariable("id") int userId, Model model) {
+        User user = userRepository.findById(userId).get();
+        model.addAttribute("user", user);
+        return "/userDetails";
+    }
 }

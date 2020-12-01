@@ -3,15 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
+    <link rel="stylesheet" href="stylesheet/userpage.css">
 </head>
 <body>
-    <div>
-        <span th:if="${userSearch == '' || userSearch == ' '}">You have searched for nothing!</span>
+    <div id="header">
+        <img src ="picture/SMA-logo.gif" alt="logo" id ="logo">
+
+        <form id="search-form" action="/usersearch" method="get">
+            <input type = "text" name="search" id="search">
+        </form>
+    </div>
+    <div id="search-area">
+        <span class="error-empty-search" th:if="${userSearch == '' || userSearch == ' '}">You have searched for nothing!</span>
         <span th:unless="${userSearch == '' || userSearch == ' '}">
             <div th:switch="${userList.size()}">
-                <span th:case="'0'">There are no users corresponding to Your search!</span>
+                <span class="error-empty-search" th:case="'0'">There are no users corresponding to Your search!</span>
                 <div th:case="*">
-                    <div th:each="user: ${userList}" th:text="${user.firstName + ' ' + user.lastName}"></div>
+                    <div th:each="user: ${userList}">
+                        <a th:href="@{'/user/' + ${user.userId}}">
+                            <div th:text="${user.firstName + ' ' + user.lastName}"></div>
+                        </a>
+                    </div>
+                    <br><br>
                 </div>
             </div>
         </span>
