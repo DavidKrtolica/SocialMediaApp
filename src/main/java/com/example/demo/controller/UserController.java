@@ -24,10 +24,11 @@ public class UserController {
     @Autowired
     FriendRepository friendRepository;
 
-    //GLOBAL VARIABLE FOR THE LOGGED-IN USER AND FRIENDS LIST
+    //GLOBAL VARIABLES
     User loggedInUser;
     List<Friend> friendsList;
     List<User> userList;
+    List<Friend> userFriendList;
 
     @GetMapping("/index")
     public String returnIndex() {
@@ -85,7 +86,9 @@ public class UserController {
     @GetMapping("/user/{id}")
     public String returnOtherUserProfilePage(@PathVariable("id") int userId, Model model) {
         User user = userRepository.findById(userId).get();
+        userFriendList = friendRepository.findByUserId(user.getUserId());
         model.addAttribute("user", user);
+        model.addAttribute("userFriendList", userFriendList);
         return "/userdetails";
     }
 }
