@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link th:href="@{stylesheet/userpage.css}" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <img th:src ="@{/picture/SMA-logo.gif}" alt="logo" id ="logo">
+        <form id="search-form" action="/usersearch" method="get">
+            <input type = "text" name="search" id="search">
+        </form>
+    </div>
+    <div id="main-section">
+        <div id="user-area"></div>
+        <img th:src="@{/picture/user-pic.png}" id="logged-user-image">
+        <span id="user-name" th:text="${user.firstName + ' ' + user.lastName}"></span>
+    </div>
+    <div id="area-description">
+        <p id="description" th:text="${user.userDescription}"></p>
+    </div>
+    <!-- <span id="friends-list">Friends List:<br><br></span>
+    <div id="area-friends-list" th:each="friend: ${}">
+        <img src="picture/user-pic.png" id="user-picture-small">
+        <div class="friend-user-firstName" th:text="${friend.getUserByFriendlyId().firstName + ' '
+                                                                + friend.getUserByFriendlyId().lastName}">
+        </div>
+    </div> -->
+</body>
+</html>
