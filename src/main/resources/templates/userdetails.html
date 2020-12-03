@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
-    <link th:href="@{stylesheet/userpage.css}" rel="stylesheet">
+    <link th:href="@{/stylesheet/userpage.css}" rel="stylesheet">
 </head>
 <body>
     <div id="header">
@@ -20,12 +20,12 @@
     <div id="area-description">
         <p id="description" th:text="${user.userDescription}"></p>
     </div>
-    <!-- <span id="friends-list">Friends List:<br><br></span>
-    <div id="area-friends-list" th:each="friend: ${}">
-        <img src="picture/user-pic.png" id="user-picture-small">
+    <span id="friends-list">Friends List:<br><br></span>
+    <div id="area-friends-list" th:each="friend: ${userFriendList}">
+        <img th:src="@{/picture/user-pic.png}" id="user-picture-small">
         <div class="friend-user-firstName" th:text="${friend.getUserByFriendlyId().firstName + ' '
                                                                 + friend.getUserByFriendlyId().lastName}">
         </div>
-    </div> -->
+    </div>
 </body>
 </html>
