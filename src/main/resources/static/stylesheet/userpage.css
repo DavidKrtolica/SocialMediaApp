@@ -66,8 +66,16 @@ body {
     height: 70px;
 }
 
+<<<<<<< Updated upstream
 #area-description {
     background-color: yellow;
     position: relative;
     left: 100px;
+=======
+#description-area {
+    position: relative;
+    left: 20px;
+    font-size: 20px;
+    font-family: "Segoe UI";
+>>>>>>> Stashed changes
 }

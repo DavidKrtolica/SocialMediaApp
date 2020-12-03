@@ -10,6 +10,7 @@
             <img src ="picture/SMA-logo.gif" alt="logo" id ="logo">
 
 
+<<<<<<< Updated upstream
     <form id="search-form" action="/usersearch" method="get">
         <input type = "text" name="search" id="search">
     </form>
@@ -30,6 +31,25 @@
 <div id="area-friends-list" th:each="friend: ${friendsList}">
     <img src="picture/user-pic.png" id="user-picture-small">
     <div class="friend-user-firstName" th:text="${friend.getUserByFriendlyId().firstName + ' '
+=======
+            <form id="log-out-form" action="/index" method="get" >
+                <button id="log-out-button" type="submit">LOG OUT</button>
+            </form>
+        </div>
+
+        <div id="main-section">
+            <div id="user-area"></div>
+                <img src="picture/user-pic.png" alt="User Picture" id="logged-user-image">
+                <span id="user-name" th:text="${loggedInUser.firstName + ' ' + loggedInUser.lastName}"></span>
+            </div>
+            <div id="area-description">
+                <p id="description" th:text="${loggedInUser.userDescription}"></p>
+            </div>
+            <span id="friends-list">Friends List:<br><br></span>
+            <div id="area-friends-list" th:each="friend: ${friendsList}">
+                <img src="picture/user-pic.png" id="user-picture-small">
+                <div class="friend-user-firstName" th:text="${friend.getUserByFriendlyId().firstName + ' '
+>>>>>>> Stashed changes
                                                             + friend.getUserByFriendlyId().lastName}">
     </div>
     <button>Remove Friend</button><br><br>
