@@ -12,18 +12,24 @@
             <img src="picture/SMA-logo.gif" alt="Logo" id="logo">
             <span id="title-name">SocialMediaApp</span>
         </div>
+
         <div id="main-container">
             <form id="login-form" action="/index" method="post"> <!-- Method which retrieves the userpage.html page. -->
-            <span id="first-part">SMA</span>
-            <span id="second-part">Login</span><br>
+                <span id="first-part">SMA</span>
+                <span id="second-part">Login</span><br>
 
-            <label  id="username">Username:</label>
-            <input required type="text" name="username" id="username-input" ><br>
+                <div id="credentials-area">
+                    <div id="username-area">
+                        <label  id="username">Username:</label>
+                        <input required type="text" name="username" id="username-input" ><br>
+                    </div>
 
-            <label for="password-input" id="password">Password:</label>
-            <input type="text" name="password" id="password-input" required><br>
-
-            <button id ="login" value="submit">LOG IN</button>
+                    <div id="password-area">
+                        <label for="password-input" id="password">Password:</label>
+                        <input type="text" name="password" id="password-input" required><br>
+                    </div>
+                </div>
+                <button id ="login" value="submit">LOG IN</button>
             </form>
         </div>
     </body>

@@ -8,6 +8,7 @@ body {
     height: 8%;
     padding-top: 10px;
     margin-bottom: 0%;
+    padding-bottom: 10px;
 }
 
 #header {
@@ -17,14 +18,13 @@ body {
 
 #title-name {
     color: white;
-    padding-left: 20px;
-    padding-bottom: 5px;
+    padding-left: 40px;
     font-weight: bold;
     width: auto;
     font-size: 70px;
     font-family: 'Segoe UI';
-    position: absolute;
-    top:5px;
+    position: relative;
+    top:-30px;
 }
 
 #main-container {
@@ -36,27 +36,23 @@ body {
     top: 50%;
     left: 50%;
     width:30em;
-    height:18em;
+    height:19em;
     margin-top: -9em; /*set to a negative number 1/2 of your height*/
     margin-left: -15em; /*set to a negative number 1/2 of your width*/
-    border: 1px solid #ccc;
-
+    border: 1px solid black;
+    box-shadow: 17px 17px 20px #707070;
 }
 
 button {
-    position:absolute;
     background-color: #EF7F0F;
-    padding-left:100px;
-    padding-right:100px;
-    font-size: large;
+    padding: 5px 100px 5px;
+    font-size: 30px;
     border: none ;
     border-radius: 5em;
     color: white;
-    padding-top: 4px;
-    padding-bottom: 4px;
     position: relative;
-    top:50px;
-    left:80px;
+    top:40px;
+    left:90px;
 }
 
 #first-part {
@@ -77,37 +73,25 @@ button {
     font-weight: bold;
     position: relative;
     top:10px;
-
 }
 
-#username {
+#credentials-area {
+    position: relative;
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+#username-area {
+    padding-bottom: 20px;
+}
+
+#username, #password{
     color: #707070;
-    padding-left: 50px;
     font-family: 'Segoe UI';
-    font-size: medium;
+    font-size: 25px;
     position: relative;
-    top:10px;
 }
 
-input#username-input {
-    border-color: #707070;
-    padding-left: 5px;
-    position: relative;
-    top:10px;
-}
-
-#password{
-    color: #707070;
-    padding-left: 50px;
-    font-family: 'Segoe UI';
-    font-size: medium;
-    position: relative;
-    top:10px;
-}
-
-#password-input {
-    border-color: #707070;
-    padding-left: 5px;
-    position: relative;
-    top:10px;
+#password {
+    padding-right: 8px;
 }
