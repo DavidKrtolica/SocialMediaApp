@@ -7,14 +7,14 @@
 </head>
 <body>
     <div id="header">
-        <img th:src ="@{picture/SMA-logo.gif}" alt="logo" id ="logo">
+        <img th:src ="@{/picture/SMA-logo.gif}" alt="logo" id ="logo">
         <form id="search-form" action="/usersearch" method="get">
             <input type = "text" name="search" id="search">
         </form>
     </div>
     <div id="main-section">
         <div id="user-area"></div>
-        <img th:src="@{picture/user-pic.png}" id="logged-user-image">
+        <img th:src="@{/picture/user-pic.png}" id="logged-user-image">
         <span id="user-name" th:text="${user.firstName + ' ' + user.lastName}"></span>
     </div>
     <div id="area-description">

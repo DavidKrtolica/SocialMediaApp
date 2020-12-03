@@ -86,6 +86,6 @@ public class UserController {
     public String returnOtherUserProfilePage(@PathVariable("id") int userId, Model model) {
         User user = userRepository.findById(userId).get();
         model.addAttribute("user", user);
-        return "/userDetails";
+        return "/userdetails";
     }
 }
