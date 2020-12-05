@@ -91,4 +91,15 @@ public class UserController {
         model.addAttribute("userFriendList", userFriendList);
         return "/userdetails";
     }
+
+    @GetMapping("/remove/{id}")
+    public String removeFriend(@PathVariable("id")int id, Model model) {
+        Friend friend1 = friendRepository.findByUserIdAndFriendlyId(loggedInUser.getUserId(), id);
+        Friend friend2 = friendRepository.findByUserIdAndFriendlyId(id, loggedInUser.getUserId());
+        friendRepository.delete(friend1);
+        friendRepository.delete(friend2);
+        model.addAttribute("loggedInUser", loggedInUser);
+        return "/userpage";
+    }
+
 }

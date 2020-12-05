@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>My Profile</title>
-    <link rel="stylesheet" href="stylesheet/userpage.css">
+    <link th:href="@{/stylesheet/userpage.css}" rel="stylesheet">
 </head>
 <body>
 <div id="header">
-    <img src ="picture/SMA-logo.gif" alt="logo" id ="logo">
+    <img th:src ="@{/picture/SMA-logo.gif}" alt="logo" id ="logo">
 
     <form id="search-form" action="/usersearch" method="get">
         <input type = "text" name="search" id="search">
@@ -18,7 +18,7 @@
 </div>
 <div id="main-section">
     <div id="user-area"></div>
-    <img src="picture/user-pic.png" alt="User Picture" id="logged-user-image">
+    <img th:src="@{/picture/user-pic.png}" alt="User Picture" id="logged-user-image">
     <span id="user-name" th:text="${loggedInUser.firstName + ' ' + loggedInUser.lastName}"></span>
 </div>
 <div id="area-description">
@@ -26,11 +26,13 @@
 </div>
 <span id="friends-list">Friends List:<br><br></span>
 <div id="area-friends-list" th:each="friend: ${friendsList}">
-    <img src="picture/user-pic.png" id="user-picture-small">
+    <img th:src="@{/picture/user-pic.png}" id="user-picture-small">
     <div class="friend-user-firstName" th:text="${friend.getUserByFriendlyId().firstName + ' '
                                                             + friend.getUserByFriendlyId().lastName}">
     </div>
-    <button>Remove Friend</button><br><br>
+    <a th:href="@{'/remove/' + ${friend.friendlyId}}">
+        <button>Remove Friend</button>
+    </a><br><br>
 </div>
 </body>
 </html>
