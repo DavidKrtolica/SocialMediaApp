@@ -98,6 +98,9 @@ public class UserController {
         Friend friend2 = friendRepository.findByUserIdAndFriendlyId(id, loggedInUser.getUserId());
         friendRepository.delete(friend1);
         friendRepository.delete(friend2);
+        int loggedInUserId = loggedInUser.getUserId();
+        List <Friend> friendsListNew = friendRepository.findByUserId(loggedInUserId);
+        model.addAttribute("friendsList", friendsListNew);
         model.addAttribute("loggedInUser", loggedInUser);
         return "/userpage";
     }
