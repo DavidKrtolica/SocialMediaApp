@@ -28,6 +28,9 @@
                             <div id="user-info" th:text="${user.firstName + ' ' + user.lastName}"></div>
                         </a>
                         <div id="user-description" th:text="${user.userDescription}"></div>
+                        <a th:href="@{'/add/' + ${user.userId}}">
+                            <button type="submit" >ADD</button>
+                        </a>
                         <hr>
                     </div>
                     <br><br>

@@ -11,6 +11,15 @@ public class Friend {
     private User userByUserId;
     private User userByFriendlyId;
 
+    public Friend() {}
+
+    public Friend(int userId, int friendlyId, User userByUserId, User userByFriendlyId) {
+        this.userId = userId;
+        this.friendlyId = friendlyId;
+        this.userByUserId = userByUserId;
+        this.userByFriendlyId = userByFriendlyId;
+    }
+
     @Id
     @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
     public int getUserId() {

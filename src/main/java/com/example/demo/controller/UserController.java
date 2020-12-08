@@ -98,10 +98,39 @@ public class UserController {
         Friend friend2 = friendRepository.findByUserIdAndFriendlyId(id, loggedInUser.getUserId());
         friendRepository.delete(friend1);
         friendRepository.delete(friend2);
+
         int loggedInUserId = loggedInUser.getUserId();
         List <Friend> friendsListNew = friendRepository.findByUserId(loggedInUserId);
         model.addAttribute("friendsList", friendsListNew);
         model.addAttribute("loggedInUser", loggedInUser);
+
+        return "/userpage";
+    }
+
+    @GetMapping("/add/{id}")
+    public String addFriend(@PathVariable("id")int id, Model model) {
+        User user = userRepository.findById(id).get();
+
+        User refreshedLoggedInUser = loggedInUser;
+        List <Friend> friendsListNewer = friendRepository.findByUserId(refreshedLoggedInUser.getUserId());
+        refreshedLoggedInUser.setFriendsByUserId(friendsListNewer);
+
+        Friend friend1 = new Friend();
+        friend1.setUserId(refreshedLoggedInUser.getUserId());
+        friend1.setFriendlyId(id);
+        friend1.setUserByUserId(refreshedLoggedInUser);
+        friend1.setUserByFriendlyId(user);
+        friendRepository.save(friend1);
+
+        Friend friend2 = new Friend();
+        friend2.setUserId(id);
+        friend2.setFriendlyId(loggedInUser.getUserId());
+        friendRepository.save(friend2);
+
+
+        model.addAttribute("friendsList", friendsListNewer);
+        model.addAttribute("loggedInUser", refreshedLoggedInUser);
+
         return "/userpage";
     }
 
