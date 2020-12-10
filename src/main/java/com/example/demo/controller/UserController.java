@@ -110,8 +110,7 @@ public class UserController {
     @GetMapping("/add/{id}")
     public String addFriend(@PathVariable("id")int id, Model model) {
         User user = userRepository.findById(id).get();
-
-        User refreshedLoggedInUser = loggedInUser;
+        User refreshedLoggedInUser = userRepository.findById(loggedInUser.getUserId()).get();
         List <Friend> friendsListNewer = friendRepository.findByUserId(refreshedLoggedInUser.getUserId());
         refreshedLoggedInUser.setFriendsByUserId(friendsListNewer);
 
@@ -124,7 +123,9 @@ public class UserController {
 
         Friend friend2 = new Friend();
         friend2.setUserId(id);
-        friend2.setFriendlyId(loggedInUser.getUserId());
+        friend2.setFriendlyId(refreshedLoggedInUser.getUserId());
+        friend2.setUserByUserId(user);
+        friend2.setUserByFriendlyId(refreshedLoggedInUser);
         friendRepository.save(friend2);
 
 
