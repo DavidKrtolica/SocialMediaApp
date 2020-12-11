@@ -55,7 +55,7 @@ public class Friend {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false, updatable = false, insertable = false)
     public User getUserByUserId() {
         return userByUserId;
     }
@@ -65,7 +65,7 @@ public class Friend {
     }
 
     @ManyToOne
-    @JoinColumn(name = "friendly_id", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "friendly_id", referencedColumnName = "user_id", nullable = false, updatable = false, insertable = false)
     public User getUserByFriendlyId() {
         return userByFriendlyId;
     }

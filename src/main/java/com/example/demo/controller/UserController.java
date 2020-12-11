@@ -119,14 +119,14 @@ public class UserController {
         friend1.setUserByUserId(refreshedLoggedInUser);
         friend1.setUserByFriendlyId(user);
         friendsListNewer.add(friend1);
-        //friendRepository.save(friend1);
+        friendRepository.save(friend1);
 
         Friend friend2 = new Friend();
         friend2.setUserId(id);
         friend2.setFriendlyId(refreshedLoggedInUser.getUserId());
         friend2.setUserByUserId(user);
         friend2.setUserByFriendlyId(refreshedLoggedInUser);
-        //friendRepository.save(friend2);
+        friendRepository.save(friend2);
 
 
         model.addAttribute("friendsList", friendsListNewer);
