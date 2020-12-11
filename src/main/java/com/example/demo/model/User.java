@@ -18,6 +18,16 @@ public class User {
     private Collection<Friend> friendsByUserFriendlyId;
     private Collection<UserPost> userPostsByUserId;
 
+    public User(String firstName, String lastName, String userDescription, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userDescription = userDescription;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User() {}
+
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name="native", strategy = "native")
     @Id
