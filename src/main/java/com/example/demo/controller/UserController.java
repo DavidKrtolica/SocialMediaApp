@@ -1,13 +1,18 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Friend;
+import com.example.demo.model.Post;
 import com.example.demo.model.User;
+import com.example.demo.model.UserPost;
 import com.example.demo.repository.FriendRepository;
+import com.example.demo.repository.PostRepository;
+import com.example.demo.repository.UserPostRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
@@ -23,6 +28,12 @@ public class UserController {
 
     @Autowired
     FriendRepository friendRepository;
+
+    @Autowired
+    PostRepository postRepository;
+
+    @Autowired
+    UserPostRepository userPostRepository;
 
     //GLOBAL VARIABLES
     User loggedInUser;
@@ -103,6 +114,28 @@ public class UserController {
         List <Friend> friendsListNew = friendRepository.findByUserId(loggedInUserId);
         model.addAttribute("friendsList", friendsListNew);
         model.addAttribute("loggedInUser", loggedInUser);
+
+        return "/userpage";
+    }
+
+    @GetMapping("/createNewPost")
+    public String createPost(Model model){
+        model.addAttribute("createPost", new Post());
+        return "/newpost";
+    }
+
+    @PostMapping("/createNewPost/{id}")
+    public String createPost(@ModelAttribute Post post,  Model model){
+        // FIND THE LOGGED IN USER
+        User refreshedLoggedInUser = userRepository.findById(loggedInUser.getUserId()).get();
+        int postId = postRepository.save(post).getPostId();
+
+        UserPost userPost = new UserPost();
+        userPost.setPostId(postId);
+        userPost.setUserId(refreshedLoggedInUser.getUserId());
+        userPostRepository.save(userPost);
+
+      //model.addAttribute("postList", friendsListNewer);
 
         return "/userpage";
     }
