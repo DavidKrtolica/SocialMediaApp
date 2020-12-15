@@ -19,6 +19,7 @@ body {
     position: relative;
     left: 100px;
     top: -75px;
+    width: 40%;
 }
 
 #search {
@@ -35,6 +36,7 @@ body {
     position: relative;
     top: -140px;
     left: 60%;
+    width: 20%;
 }
 
 #log-out-button {
@@ -66,16 +68,10 @@ body {
     height: 70px;
 }
 
-<<<<<<< Updated upstream
-#area-description {
-    background-color: yellow;
-    position: relative;
-    left: 100px;
-=======
 #description-area {
     position: relative;
     left: 20px;
     font-size: 20px;
     font-family: "Segoe UI";
->>>>>>> Stashed changes
+
 }
