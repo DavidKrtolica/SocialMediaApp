@@ -82,6 +82,9 @@ public class UserController {
     @GetMapping("/usersearch")
     public String returnSearchPage(Model model, WebRequest wr) {
 
+        User refreshedLoggedInUser = userRepository.findById(loggedInUser.getUserId()).get();
+        List<Friend> refreshedFriendList = (List<Friend>) refreshedLoggedInUser.getFriendsByUserId();
+
         String userSearch = wr.getParameter("search");
         model.addAttribute("userSearch", userSearch);
 
@@ -91,6 +94,13 @@ public class UserController {
             userList.addAll(userRepository.findUserByLastNameContaining(s));
             model.addAttribute("userList", userList);
         }
+
+        for(User user : userList) {
+            Friend friend = new Friend(refreshedLoggedInUser.getUserId(), user.getUserId(), refreshedLoggedInUser, user);
+            boolean checkFriend = refreshedFriendList.contains(friend);
+            model.addAttribute("checkFriend", checkFriend);
+        }
+
         return "/usersearch";
     }
 

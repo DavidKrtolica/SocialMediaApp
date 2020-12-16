@@ -28,10 +28,11 @@
                             <div id="user-info" th:text="${user.firstName + ' ' + user.lastName}"></div>
                         </a>
                         <div id="user-description" th:text="${user.userDescription}"></div>
-
-                        <form th:action="@{/add/{id}(id=${user.userId})}" th:object="${user}" method="post">
-                            <button type="submit" >ADD</button>
-                        </form>
+                        <span th:if="${!checkFriend}">
+                            <form th:action="@{/add/{id}(id=${user.userId})}" th:object="${user}" method="post">
+                                <button type="submit" >ADD</button>
+                            </form>
+                        </span>
                         <hr>
                     </div>
                     <br><br>
