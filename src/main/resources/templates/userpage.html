@@ -35,6 +35,7 @@
     </a><br><br>
 </div>
 <div>
+    <span>Post List:<br><br></span>
     <div id="area-post-list" th:each="userPost: ${userPostList}">
        <div class="post-desc" th:text="${userPost.getPostByPostId().getPostDescription()}"></div>
     </div>
