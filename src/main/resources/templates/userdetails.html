@@ -27,5 +27,9 @@
                                                                 + friend.getUserByFriendlyId().lastName}">
         </div>
     </div>
+    <br><br>
+    <div id="area-post-list" th:each="userPost: ${userPostList}">
+        <div class="post-desc" th:text="${userPost.getPostByPostId().getPostDescription()}"></div>
+    </div>
 </body>
 </html>

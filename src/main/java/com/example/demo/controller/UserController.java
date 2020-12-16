@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -75,6 +76,8 @@ public class UserController {
 
         model.addAttribute("loggedInUser", loggedInUser);
         model.addAttribute("friendsList", friendsList);
+        Collection<UserPost> userPostList = userPostRepository.findAllUserPostsByUserId(loggedInUser.getUserId());
+        model.addAttribute("userPostList", userPostList);
         return "/userpage";
     }
 
@@ -110,6 +113,8 @@ public class UserController {
         userFriendList = friendRepository.findByUserId(user.getUserId());
         model.addAttribute("user", user);
         model.addAttribute("userFriendList", userFriendList);
+        Collection<UserPost> userPostList = userPostRepository.findAllUserPostsByUserId(user.getUserId());
+        model.addAttribute("userPostList", userPostList);
         return "/userdetails";
     }
 
@@ -124,6 +129,8 @@ public class UserController {
         List <Friend> friendsListNew = friendRepository.findByUserId(loggedInUserId);
         model.addAttribute("friendsList", friendsListNew);
         model.addAttribute("loggedInUser", loggedInUser);
+        Collection<UserPost> userPostList = userPostRepository.findAllUserPostsByUserId(loggedInUser.getUserId());
+        model.addAttribute("userPostList", userPostList);
 
         return "/userpage";
     }
@@ -134,18 +141,31 @@ public class UserController {
         return "/newpost";
     }
 
-    @PostMapping("/createNewPost/{id}")
-    public String createPost(@ModelAttribute Post post,  Model model){
-        // FIND THE LOGGED IN USER
+    @PostMapping("/createNewPost")
+    public String createPost(WebRequest wr, Model model){
+        // FIND THE LOGGED IN USER AND FRIEND LIST
         User refreshedLoggedInUser = userRepository.findById(loggedInUser.getUserId()).get();
-        int postId = postRepository.save(post).getPostId();
+
+        String postDesc = wr.getParameter("description");
+        Post post = new Post();
+        post.setPostDescription(postDesc);
+
+        postRepository.save(post);
+        int postId = post.getPostId();
 
         UserPost userPost = new UserPost();
         userPost.setPostId(postId);
         userPost.setUserId(refreshedLoggedInUser.getUserId());
+        userPost.setPostByPostId(post);
+        userPost.setUserByUserId(refreshedLoggedInUser);
         userPostRepository.save(userPost);
 
-      //model.addAttribute("postList", friendsListNewer);
+        List <Friend> friendsListNewer = friendRepository.findByUserId(refreshedLoggedInUser.getUserId());
+        model.addAttribute("loggedInUser", refreshedLoggedInUser);
+        model.addAttribute("friendsList", friendsListNewer);
+
+        Collection<UserPost> userPostList = userPostRepository.findAllUserPostsByUserId(refreshedLoggedInUser.getUserId());
+        model.addAttribute("userPostList", userPostList);
 
         return "/userpage";
     }
@@ -174,6 +194,8 @@ public class UserController {
 
         model.addAttribute("friendsList", friendsListNewer);
         model.addAttribute("loggedInUser", refreshedLoggedInUser);
+        Collection<UserPost> userPostList = userPostRepository.findAllUserPostsByUserId(refreshedLoggedInUser.getUserId());
+        model.addAttribute("userPostList", userPostList);
 
         return "/userpage";
     }

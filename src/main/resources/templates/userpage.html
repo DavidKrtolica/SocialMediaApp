@@ -35,8 +35,11 @@
     </a><br><br>
 </div>
 <div>
+    <div id="area-post-list" th:each="userPost: ${userPostList}">
+       <div class="post-desc" th:text="${userPost.getPostByPostId().getPostDescription()}"></div>
+    </div>
     <section class="content">
-        <a href="/post" class="btn-create" >
+        <a href="/createNewPost" class="btn-create" >
             <button> Create Post </button>
         </a>
     </section>

@@ -47,7 +47,7 @@ public class UserPost {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false, insertable = false, updatable = false)
     public User getUserByUserId() {
         return userByUserId;
     }
@@ -57,7 +57,7 @@ public class UserPost {
     }
 
     @ManyToOne
-    @JoinColumn(name = "post_id", referencedColumnName = "post_id", nullable = false)
+    @JoinColumn(name = "post_id", referencedColumnName = "post_id", nullable = false, insertable = false, updatable = false)
     public Post getPostByPostId() {
         return postByPostId;
     }
