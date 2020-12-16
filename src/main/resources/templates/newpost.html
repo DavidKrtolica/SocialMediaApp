@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Post</title>
+    <link th:href="@{/stylesheet/userpage.css}" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+    <img th:src ="@{/picture/SMA-logo.gif}" alt="logo" id ="logo">
+</div>
+<div>
+    <form action="/createPost" method="post">
+        <textarea id="post-description" name="description" rows="4" cols="50">
+
+  </textarea>
+        <input  type="submit" class="input-post" value="Create Post">
+    </form>
+</div>
+</body>
+</html>
