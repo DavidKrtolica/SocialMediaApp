@@ -5,7 +5,7 @@
     <title>My Profile</title>
     <link th:href="@{/stylesheet/userpage.css}" rel="stylesheet">
 </head>
-<body>
+<body style="margin-left: 10px">
 <div id="header">
     <img th:src ="@{/picture/SMA-logo.gif}" alt="logo" id ="logo">
 
@@ -31,7 +31,7 @@
                                                             + friend.getUserByFriendlyId().lastName}">
     </div>
     <a th:href="@{'/remove/' + ${friend.friendlyId}}">
-        <button>Remove Friend</button>
+        <button class="button-create-post">Remove Friend</button>
     </a><br><br>
 </div>
 <div>
@@ -41,7 +41,7 @@
     </div>
     <section class="content">
         <a href="/createNewPost" class="btn-create" >
-            <button> Create Post </button>
+            <button class="button-create-post"> Create Post </button>
         </a>
     </section>
 </div>

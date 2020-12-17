@@ -30,7 +30,7 @@
                         <div id="user-description" th:text="${user.userDescription}"></div>
                         <span th:if="${!checkFriend}">
                             <form th:action="@{/add/{id}(id=${user.userId})}" th:object="${user}" method="post">
-                                <button type="submit" >ADD</button>
+                                <button class="button-create-post" type="submit" >ADD</button>
                             </form>
                         </span>
                         <hr>
